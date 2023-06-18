@@ -1,6 +1,12 @@
-<div class="{{ section.settings.background }}">
-  <div class="relative isolate px-6 lg:px-8">
-    <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+<div class="relative {{ section.settings.background }}" style="min-height: 50vh">
+  <div class="isolate px-6 lg:px-8">
+    <div class="absolute top-0 left-0 right-0 bottom-0 bg-cover bg-center" style="z-index: 5; background-image: url({{ section.settings.image | img_url: '1200x1200' }})"></div>
+    <div
+      id="backdrop"
+      class="absolute top-0 left-0 right-0 bottom-0"
+      style="z-index: 6; background-color: rgba(0, 0, 0, {{ section.settings.opacity }}%)"></div>
+
+    <div class="flex items-center justify-center text-center mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 absolute top-0 left-0 right-0 bottom-0" style="z-index: 7">
       <div class="text-center">
         <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
           {{ section.settings.title }}
@@ -41,16 +47,32 @@
       "index", "page", "product"
     ],
     "settings": [
+
       {
         "type": "text",
         "id": "title",
         "label": "Title",
         "default": "Welcome to our store"
-      }, {
+      },
+      {
         "type": "text",
         "id": "subtitle",
         "label": "Subtitle",
         "default": "Shop our latest collections and products."
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Background image"
+      },
+      {
+        "type": "range",
+        "id": "opacity",
+        "label": "Background opacity",
+        "default": 50,
+        "min": 0,
+        "max": 100,
+        "step": 1
       }, {
         "type": "select",
         "id": "background",
