@@ -1,0 +1,108 @@
+<div class="container mx-auto flex flex-col gap-5 p-5">
+  <h1 class="text-5xl">{{ collection.title }}</h1>
+
+  <div class="text-sm breadcrumbs py-0">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/collections">Collections</a></li>
+      <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+    </ul>
+  </div>
+
+  {% if collection.products.size > 0 %}
+    {% paginate collection.products by 1000 %}
+      <div class="product-grid">
+        {% for product in collection.products %}
+          <div class="card bg-base-100 shadow-xl hover:shadow-2xl ease-in transition-shadow duration-75">
+
+            <a style="border-top-left-radius: inherit; border-top-right-radius: inherit; border-bottom-left-radius: inherit; border-bottom-right-radius: inherit;" href="{{ product.url | within: collection }}">
+              <figure class="h-64" style="border-top-left-radius: inherit; border-top-right-radius: inherit;">
+                <img
+                  style="border-top-left-radius: inherit; border-top-right-radius: inherit;"
+                  class="object-cover w-full h-full"
+                  src="{{ product.featured_image.src | img_url: 'large' }}"
+                  alt="{{ product.featured_image.alt | escape }}" />
+              </figure>
+
+              <div class="card-body">
+                <h2 class="card-title">{{ product.title }}</h2>
+
+                <div class="flex gap-2">
+                  {% if product.available %}
+                    {% if product.compare_at_price %}
+                      <div class="flex gap-2">
+                        <div class="badge badge-primary" id="selected-variant-price">{{ product.price | money }}</div>
+                        <div class="badge badge-neutral line-through">{{ product.compare_at_price | money }}</div>
+                      </div>
+                    {% else %}
+                      <div class="badge badge-primary" id="selected-variant-price">{{ product.price | money }}</div>
+                    {% endif %}
+                  {% endif %}
+
+                  {% unless product.available %}
+                    <div class="badge badge-neutral">Sold out</div>
+                  {% endunless %}
+                </div>
+
+                <p>
+                  {{ product.description | strip_html | truncate: 100 }}
+                </p>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+
+
+      {% if paginate.pages > 1 %}
+        <div class="flex justify-center">
+          <div class="join">
+            {%- if paginate.previous -%}
+              <a href="{{ paginate.previous.url }}" class="join-item btn">Previous</a>
+            {%- else -%}
+              <button disabled class="join-item btn">Previous</button>
+            {%- endif -%}
+
+            {%- for part in paginate.parts -%}
+              {%- if part.is_link -%}
+                <a href="{{ part.url }}" class="join-item btn">{{ part.title }}</a>
+              {%- else -%}
+                {%- if part.title == paginate.current_page -%}
+                  <a class="join-item btn btn-active">{{ part.title }}</a>
+                {%- else -%}
+                  <a href="{{ part.url }}" class="join-item btn">{{ part.title }}</a>
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+
+            {%- if paginate.next -%}
+              <a href="{{ paginate.next.url }}" class="join-item btn">Next</a>
+            {%- else -%}
+              <button disabled class="join-item btn">Next</button>
+            {%- endif -%}
+          </div>
+        </div>
+      {% endif %}
+    {% endpaginate %}
+  {% else %}
+    <div class="flex flex-col gap-5 items-center">
+      <p class="text-center mt-10">No products found.</p>
+      <a href="/collections" class="btn btn-primary">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+
+        Back to all collections
+      </a>
+    </div>
+  {% endif %}
+</div>

@@ -1,0 +1,10 @@
+{
+	"name": "List collections template",
+	"sections": {
+		"collections-grid": {
+			"type": "collections-grid",
+			"label": "Collections grid"
+		}
+	},
+	"order": ["collections-grid"]
+}

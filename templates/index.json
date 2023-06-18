@@ -1,0 +1,27 @@
+{
+	"name": "Home page template",
+	"sections": {
+		"hero": {
+			"type": "hero",
+			"label": "Hero"
+		},
+		"featured-products": {
+			"type": "featured-products",
+			"label": "Featured Products"
+		},
+		"featured-product": {
+			"type": "featured-product",
+			"label": "Featured Product"
+		},
+		"featured-collections": {
+			"type": "featured-collections",
+			"label": "Featured Collections"
+		}
+	},
+	"order": [
+		"hero",
+		"featured-products",
+		"featured-product",
+		"featured-collections"
+	]
+}

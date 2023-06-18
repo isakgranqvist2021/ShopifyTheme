@@ -1,0 +1,75 @@
+<section class="py-16 px-5 {{ section.settings.background }}">
+  <div class="container mx-auto flex flex-col items-center gap-10">
+    <div>
+      <h3 class="text-center text-base-content text-3xl font-semibold">
+        {{ section.settings.title }}
+      </h3>
+      <h4 class="text-center text-base-content">
+        {{ section.settings.subtitle }}
+      </h4>
+    </div>
+
+
+    <section class="flex justify-center gap-10 flex-wrap 2xl:gap-20">
+      {% for collection in section.settings.collection_list %}
+        <a href="/collections/{{ collection }}">
+          <img
+            class="rounded-full w-64 h-64"
+            src="{{ collection.image | img_url: '300x300' }}"
+            alt="{{ collection.title }}" />
+        </a>
+      {% endfor %}
+    </section>
+
+    <a class="max-w-fit btn btn-neutral" href="/collections">
+      All collections
+    </a>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Featured collections",
+    "templates": [
+      "index", "page", "product"
+    ],
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Featured Collections"
+      }, {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "Check out our latest collections"
+      }, {
+        "type": "collection_list",
+        "id": "collection_list",
+        "label": "Collections",
+        "limit": 3
+      }, {
+        "type": "select",
+        "id": "background",
+        "label": "Background",
+        "default": "bg-base-100",
+        "options": [
+          {
+            "label": "Background 1",
+            "value": "bg-base-100"
+          }, {
+            "label": "Background 2",
+            "value": "bg-base-200"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured collections",
+        "category": "Collections"
+      }
+    ]
+  }
+{% endschema %}

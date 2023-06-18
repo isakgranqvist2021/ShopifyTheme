@@ -1,0 +1,86 @@
+<style>
+  .grid-item {
+    background-size: 100%;
+    background-position: center;
+    height: 384px;
+    width: 384px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-size 0.5s ease;
+  }
+
+  .grid-item:hover {
+    background-size: 110%;
+  }
+
+  .grid-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.56);
+    z-index: 2;
+  }
+
+  .grid-item h2 {
+    position: absolute;
+    z-index: 3;
+  }
+</style>
+
+<div class="p-10 flex flex-col gap-10 {{ section.settings.background }}">
+  <h1 class="text-5xl text-center">
+    {{ section.settings.title }}
+  </h1>
+
+  <div class="flex justify-center">
+    <div class="flex flex-wrap justify-center">
+      {% for collection in collections %}
+        {% unless collection.handle == 'home-page-featured-products' %}
+          <a
+            class="grid-item"
+            href="{{ collection.url }}"
+            style="background-image:url({{ collection.image | img_url: '384x384' }})">
+            <h2 class="text-3xl text-neutral-content">{{ collection.title }}</h2>
+          </a>
+        {% endunless %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Collections grid",
+    "templates": ["list-collections"],
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Our collections"
+      }, {
+        "type": "select",
+        "id": "background",
+        "label": "Background",
+        "default": "bg-base-100",
+        "options": [
+          {
+            "label": "Background 1",
+            "value": "bg-base-100"
+          }, {
+            "label": "Background 2",
+            "value": "bg-base-200"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collections grid",
+        "category": "Collections grid"
+      }
+    ]
+  }
+{% endschema %}

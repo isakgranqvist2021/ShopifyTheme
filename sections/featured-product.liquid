@@ -1,0 +1,61 @@
+<section class="py-16 px-5 {{ section.settings.background }}">
+  <div class="container mx-auto flex flex-col justify-center gap-5 2xl:flex-row 2xl:gap-20">
+    <section class="flex flex-col gap-5 justify-center">
+      <h3 class="text-base-content text-3xl font-semibold">
+        {{ section.settings.product.title }}
+      </h3>
+
+      <p class="text-base-content max-w-prose">
+        {{ section.settings.product.description | strip_html | truncate: 100 }}
+      </p>
+
+      <a class="max-w-fit btn btn-neutral" href="{{ section.settings.product.url }}">
+        View product
+      </a>
+    </section>
+
+    <a href="{{ section.settings.product.url }}">
+      <img
+        class="h-96 rounded-lg"
+        alt=""
+        src="{{ section.settings.product.featured_image | img_url: '300x300' }}" />
+    </a>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Featured product",
+    "templates": [
+      "index", "page", "product"
+    ],
+    "settings": [
+      {
+        "type": "product",
+        "id": "product",
+        "label": "Product"
+      }, {
+        "type": "select",
+        "id": "background",
+        "label": "Background",
+        "default": "bg-base-100",
+        "options": [
+          {
+            "label": "Background 1",
+            "value": "bg-base-100"
+          }, {
+            "label": "Background 2",
+            "value": "bg-base-200"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured product",
+        "category": "Product",
+        "settings": {}
+      }
+    ]
+  }
+{% endschema %}
