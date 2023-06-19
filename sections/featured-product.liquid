@@ -1,15 +1,15 @@
 <section class="py-16 px-5 {{ section.settings.background }}">
   <div class="container mx-auto flex flex-col justify-center gap-5 2xl:flex-row 2xl:gap-20">
     <section class="flex flex-col gap-5 justify-center">
-      <h3 class="text-base-content text-3xl font-semibold">
+      <h3 class="text-3xl font-semibold {{ section.settings.text }}">
         {{ section.settings.product.title }}
       </h3>
 
-      <p class="text-base-content max-w-prose">
+      <p class="max-w-prose {{ section.settings.text }}">
         {{ section.settings.product.description | strip_html | truncate: 100 }}
       </p>
 
-      <a class="max-w-fit btn btn-neutral" href="{{ section.settings.product.url }}">
+      <a class="max-w-fit btn btn-neutral {{ section.settings.button_variant }}" href="{{ section.settings.product.url }}">
         View product
       </a>
     </section>
@@ -36,16 +36,92 @@
         "label": "Product"
       }, {
         "type": "select",
+        "id": "text",
+        "label": "Text",
+        "default": "text-neutral-content",
+        "options": [
+          {
+            "label": "neutral-content",
+            "value": "text-neutral-content"
+          },
+          {
+            "label": "base-content",
+            "value": "text-base-content"
+          },
+          {
+            "label": "primary-content",
+            "value": "text-primary-content"
+          },
+          {
+            "label": "secondary-content",
+            "value": "text-secondary-content"
+          }, {
+            "label": "accent-content",
+            "value": "text-accent-content"
+          }
+        ]
+      }, {
+        "type": "select",
         "id": "background",
         "label": "Background",
         "default": "bg-base-100",
         "options": [
           {
-            "label": "Background 1",
+            "label": "base-100",
             "value": "bg-base-100"
-          }, {
-            "label": "Background 2",
+          },
+          {
+            "label": "base-200",
             "value": "bg-base-200"
+          },
+          {
+            "label": "base-300",
+            "value": "bg-base-300"
+          },
+          {
+            "label": "neutral",
+            "value": "bg-neutral"
+          }, {
+            "label": "primary",
+            "value": "bg-primary"
+          }, {
+            "label": "secondary",
+            "value": "bg-secondary"
+          }, {
+            "label": "accent",
+            "value": "bg-accent"
+          }
+        ]
+      }, {
+        "type": "select",
+        "id": "button_variant",
+        "label": "Button Variant",
+        "default": "btn",
+        "options": [
+          {
+            "label": "btn",
+            "value": "btn"
+          },
+          {
+            "label": "btn-neutral",
+            "value": "btn btn-neutral"
+          },
+          {
+            "label": "btn-primary",
+            "value": "btn btn-primary"
+          },
+          {
+            "label": "btn-secondary",
+            "value": "btn btn-secondary"
+          }, {
+            "label": "btn-accent",
+            "value": "btn btn-accent"
+          }, {
+            "label": "bth-ghost",
+            "value": "btn btn-ghost"
+          }, {
+            "label": "btn-link",
+            "value": "btn btn-link"
           }
         ]
       }

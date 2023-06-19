@@ -1,10 +1,10 @@
 <section class="py-16 px-5 {{ section.settings.background }}">
   <div class="container mx-auto flex flex-col gap-10">
     <div>
-      <h3 class="text-center text-3xl font-semibold text-base-content">
+      <h3 class="text-center text-3xl font-semibold {{ section.settings.text }}">
         {{ section.settings.title }}
       </h3>
-      <h4 class="text-center text-base-content">
+      <h4 class="text-center {{ section.settings.text }}">
         {{ section.settings.subtitle }}
       </h4>
     </div>
@@ -19,15 +19,15 @@
             alt="" />
 
           <div class="flex flex-col items-center">
-            <h5 class="text-xl font-medium text-base-content">
+            <h5 class="text-xl font-medium {{ section.settings.text }}">
               {{ product.title }}
             </h5>
-            <p style="max-width:32ch;" class="text-base-content text-center">
+            <p style="max-width:32ch;" class="{{ section.settings.text }} text-center">
               {{ product.description | strip_html | truncatewords: 10 }}
             </p>
           </div>
 
-          <a class="max-w-fit btn btn-neutral" href="{{ product.url }}">
+          <a class="max-w-fit {{ section.settings.button_variant }}" href="{{ product.url }}">
             View product
           </a>
         </article>
@@ -48,16 +48,45 @@
         "id": "title",
         "label": "Title",
         "default": "Featured products"
-      }, {
+      },
+      {
         "type": "text",
         "id": "subtitle",
         "label": "Subtitle",
         "default": "Check out our latest products"
-      }, {
+      },
+      {
         "type": "product_list",
         "id": "product_list",
         "label": "Products",
         "limit": 3
+      },
+      {
+        "type": "select",
+        "id": "text",
+        "label": "Text",
+        "default": "text-neutral-content",
+        "options": [
+          {
+            "label": "neutral-content",
+            "value": "text-neutral-content"
+          },
+          {
+            "label": "base-content",
+            "value": "text-base-content"
+          },
+          {
+            "label": "primary-content",
+            "value": "text-primary-content"
+          },
+          {
+            "label": "secondary-content",
+            "value": "text-secondary-content"
+          }, {
+            "label": "accent-content",
+            "value": "text-accent-content"
+          }
+        ]
       }, {
         "type": "select",
         "id": "background",
@@ -65,11 +94,61 @@
         "default": "bg-base-100",
         "options": [
           {
-            "label": "Background 1",
+            "label": "base-100",
             "value": "bg-base-100"
-          }, {
-            "label": "Background 2",
+          },
+          {
+            "label": "base-200",
             "value": "bg-base-200"
+          },
+          {
+            "label": "base-300",
+            "value": "bg-base-300"
+          },
+          {
+            "label": "neutral",
+            "value": "bg-neutral"
+          }, {
+            "label": "primary",
+            "value": "bg-primary"
+          }, {
+            "label": "secondary",
+            "value": "bg-secondary"
+          }, {
+            "label": "accent",
+            "value": "bg-accent"
+          }
+        ]
+      }, {
+        "type": "select",
+        "id": "button_variant",
+        "label": "Button Variant",
+        "default": "btn",
+        "options": [
+          {
+            "label": "btn",
+            "value": "btn"
+          },
+          {
+            "label": "btn-neutral",
+            "value": "btn btn-neutral"
+          },
+          {
+            "label": "btn-primary",
+            "value": "btn btn-primary"
+          },
+          {
+            "label": "btn-secondary",
+            "value": "btn btn-secondary"
+          }, {
+            "label": "btn-accent",
+            "value": "btn btn-accent"
+          }, {
+            "label": "bth-ghost",
+            "value": "btn btn-ghost"
+          }, {
+            "label": "btn-link",
+            "value": "btn btn-link"
           }
         ]
       }

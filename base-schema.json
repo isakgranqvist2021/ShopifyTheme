@@ -1,0 +1,226 @@
+{
+	"select-background": {
+		"type": "select",
+		"id": "background",
+		"label": "Background",
+		"default": "bg-base-100",
+		"options": [
+			{
+				"label": "base-100",
+				"value": "bg-base-100"
+			},
+			{
+				"label": "base-200",
+				"value": "bg-base-200"
+			},
+			{
+				"label": "base-300",
+				"value": "bg-base-300"
+			},
+			{
+				"label": "neutral",
+				"value": "bg-neutral"
+			},
+			{
+				"label": "primary",
+				"value": "bg-primary"
+			},
+			{
+				"label": "secondary",
+				"value": "bg-secondary"
+			},
+			{
+				"label": "accent",
+				"value": "bg-accent"
+			}
+		]
+	},
+	"select-foreground": {
+		"type": "select",
+		"id": "text",
+		"label": "Text",
+		"default": "text-neutral-content",
+		"options": [
+			{
+				"label": "neutral-content",
+				"value": "text-neutral-content"
+			},
+			{
+				"label": "base-content",
+				"value": "text-base-content"
+			},
+			{
+				"label": "primary-content",
+				"value": "text-primary-content"
+			},
+			{
+				"label": "secondary-content",
+				"value": "text-secondary-content"
+			},
+			{
+				"label": "accent-content",
+				"value": "text-accent-content"
+			}
+		]
+	},
+	"select-button-variant": {
+		"type": "select",
+		"id": "button_variant",
+		"label": "Button Variant",
+		"default": "btn",
+		"options": [
+			{
+				"label": "btn",
+				"value": "btn"
+			},
+			{
+				"label": "btn-neutral",
+				"value": "btn btn-neutral"
+			},
+			{
+				"label": "btn-primary",
+				"value": "btn btn-primary"
+			},
+			{
+				"label": "btn-secondary",
+				"value": "btn btn-secondary"
+			},
+			{
+				"label": "btn-accent",
+				"value": "btn btn-accent"
+			},
+			{
+				"label": "bth-ghost",
+				"value": "btn btn-ghost"
+			},
+			{
+				"label": "btn-link",
+				"value": "btn btn-link"
+			}
+		]
+	},
+	"select-font-size": {
+		"type": "select",
+		"id": "font_size",
+		"label": "Font size",
+		"default": "text-base",
+		"options": [
+			{
+				"label": "xs",
+				"value": "text-xs"
+			},
+			{
+				"label": "sm",
+				"value": "text-sm"
+			},
+			{
+				"label": "base",
+				"value": "text-base"
+			},
+			{
+				"label": "lg",
+				"value": "text-lg"
+			},
+			{
+				"label": "xl",
+				"value": "text-xl"
+			},
+			{
+				"label": "2xl",
+				"value": "text-2xl"
+			},
+			{
+				"label": "3xl",
+				"value": "text-3xl"
+			},
+			{
+				"label": "4xl",
+				"value": "text-4xl"
+			},
+			{
+				"label": "5xl",
+				"value": "text-5xl"
+			},
+			{
+				"label": "6xl",
+				"value": "text-6xl"
+			},
+			{
+				"label": "7xl",
+				"value": "text-7xl"
+			},
+			{
+				"label": "8xl",
+				"value": "text-8xl"
+			},
+			{
+				"label": "9xl",
+				"value": "text-9xl"
+			}
+		]
+	},
+	"select-font-weight": {
+		"type": "select",
+		"id": "font_weight",
+		"label": "Font Weight",
+		"default": "font-normal",
+		"options": [
+			{
+				"label": "thin",
+				"value": "font-thin"
+			},
+			{
+				"label": "extralight",
+				"value": "font-extralight"
+			},
+			{
+				"label": "light",
+				"value": "font-light"
+			},
+			{
+				"label": "normal",
+				"value": "font-normal"
+			},
+			{
+				"label": "medium",
+				"value": "font-medium"
+			},
+			{
+				"label": "semibold",
+				"value": "font-semibold"
+			},
+			{
+				"label": "extrabold",
+				"value": "font-extrabold"
+			},
+			{
+				"label": "black",
+				"value": "font-black"
+			}
+		]
+	},
+	"padding-top": {
+		"type": "number",
+		"id": "padding_top",
+		"label": "Padding Top",
+		"default": 0
+	},
+	"padding-bottom": {
+		"type": "number",
+		"id": "padding_bottom",
+		"label": "Padding Bottom",
+		"default": 0
+	},
+	"margin-top": {
+		"type": "number",
+		"id": "margin_top",
+		"label": "Margin Top",
+		"default": 0
+	},
+	"margin-bottom": {
+		"type": "number",
+		"id": "margin_bottom",
+		"label": "Margin Bottom",
+		"default": 0
+	}
+}

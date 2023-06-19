@@ -30,7 +30,7 @@
 </style>
 
 <div class="p-10 flex flex-col gap-10 {{ section.settings.background }}">
-  <h1 class="text-5xl text-center">
+  <h1 class="text-5xl text-center {{ section.settings.text }}">
     {{ section.settings.title }}
   </h1>
 
@@ -62,16 +62,60 @@
         "default": "Our collections"
       }, {
         "type": "select",
+        "id": "text",
+        "label": "Text",
+        "default": "text-neutral-content",
+        "options": [
+          {
+            "label": "neutral-content",
+            "value": "text-neutral-content"
+          },
+          {
+            "label": "base-content",
+            "value": "text-base-content"
+          },
+          {
+            "label": "primary-content",
+            "value": "text-primary-content"
+          },
+          {
+            "label": "secondary-content",
+            "value": "text-secondary-content"
+          }, {
+            "label": "accent-content",
+            "value": "text-accent-content"
+          }
+        ]
+      }, {
+        "type": "select",
         "id": "background",
         "label": "Background",
         "default": "bg-base-100",
         "options": [
           {
-            "label": "Background 1",
+            "label": "base-100",
             "value": "bg-base-100"
-          }, {
-            "label": "Background 2",
+          },
+          {
+            "label": "base-200",
             "value": "bg-base-200"
+          },
+          {
+            "label": "base-300",
+            "value": "bg-base-300"
+          },
+          {
+            "label": "neutral",
+            "value": "bg-neutral"
+          }, {
+            "label": "primary",
+            "value": "bg-primary"
+          }, {
+            "label": "secondary",
+            "value": "bg-secondary"
+          }, {
+            "label": "accent",
+            "value": "bg-accent"
           }
         ]
       }

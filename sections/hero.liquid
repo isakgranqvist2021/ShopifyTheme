@@ -1,38 +1,36 @@
 <div class="relative {{ section.settings.background }}" style="min-height: 50vh">
   <div class="isolate px-6 lg:px-8">
-    <div class="absolute top-0 left-0 right-0 bottom-0 bg-cover bg-center" style="z-index: 5; background-image: url({{ section.settings.image | img_url: '1200x1200' }})"></div>
-    <div
-      id="backdrop"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      style="z-index: 6; background-color: rgba(0, 0, 0, {{ section.settings.opacity }}%)"></div>
+    {% if section.settings.image %}
+      <div class="absolute top-0 left-0 right-0 bottom-0 bg-cover bg-center" style="z-index: 5; background-image: url({{ section.settings.image | img_url: '1200x1200' }})"></div>
+      <div
+        id="backdrop"
+        class="absolute top-0 left-0 right-0 bottom-0"
+        style="z-index: 6; background-color: rgba(0, 0, 0, {{ section.settings.opacity }}%)"></div>
+    {% endif %}
 
     <div class="flex items-center justify-center text-center mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 absolute top-0 left-0 right-0 bottom-0" style="z-index: 7">
       <div class="text-center">
-        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-          {{ section.settings.title }}
-        </h1>
-        <p class="mt-6 text-lg leading-8 text-gray-600">
-          {{ section.settings.subtitle }}
-        </p>
-        <div class="mt-6 flex items-center justify-center gap-x-6">
-          <a href="/collections/all" class="btn btn-primary">
-            Products
-          </a>
-          <a href="/collections" class="btn btn-neutral">
-            Collections
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-6 h-6">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </a>
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'text' %}
+            <p class="{{ block.settings.text_color }} {{ block.settings.font_size }} {{ block.settings.font_weight }}" style="padding-top: {{ block.settings.padding_top }}px; padding-bottom: {{ block.settings.padding_bottom }}px; margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px">
+              {{ block.settings.text }}
+            </p>
+          {% endcase %}
+        {% endfor %}
+
+        <div class="flex items-center justify-center gap-x-6">
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'button' %}
+              <a
+                href="{{ block.settings.url }}"
+                class="{{ block.settings.primary_button_variant }}"
+                style="padding-top: {{ block.settings.padding_top }}px; padding-bottom: {{ block.settings.padding_bottom }}px; margin-top: {{ block.settings.margin_top }}px; margin-bottom: {{ block.settings.margin_bottom }}px">
+                {{ block.settings.text }}
+              </a>
+            {% endcase %}
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -46,26 +44,231 @@
     "templates": [
       "index", "page", "product"
     ],
+    "blocks": [
+      {
+        "name": "Text",
+        "type": "text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Text",
+            "default": "Check out our latest products"
+          },
+          {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text color",
+            "default": "text-neutral-content",
+            "options": [
+              {
+                "label": "neutral-content",
+                "value": "text-neutral-content"
+              },
+              {
+                "label": "base-content",
+                "value": "text-base-content"
+              },
+              {
+                "label": "primary-content",
+                "value": "text-primary-content"
+              },
+              {
+                "label": "secondary-content",
+                "value": "text-secondary-content"
+              }, {
+                "label": "accent-content",
+                "value": "text-accent-content"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "font_size",
+            "label": "Font size",
+            "default": "text-base",
+            "options": [
+              {
+                "label": "xs",
+                "value": "text-xs"
+              },
+              {
+                "label": "sm",
+                "value": "text-sm"
+              },
+              {
+                "label": "base",
+                "value": "text-base"
+              },
+              {
+                "label": "lg",
+                "value": "text-lg"
+              }, {
+                "label": "xl",
+                "value": "text-xl"
+              }, {
+                "label": "2xl",
+                "value": "text-2xl"
+              }, {
+                "label": "3xl",
+                "value": "text-3xl"
+              }, {
+                "label": "4xl",
+                "value": "text-4xl"
+              }, {
+                "label": "5xl",
+                "value": "text-5xl"
+              }, {
+                "label": "6xl",
+                "value": "text-6xl"
+              }, {
+                "label": "7xl",
+                "value": "text-7xl"
+              }, {
+                "label": "8xl",
+                "value": "text-8xl"
+              }, {
+                "label": "9xl",
+                "value": "text-9xl"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "font_weight",
+            "label": "Font Weight",
+            "default": "font-normal",
+            "options": [
+              {
+                "label": "thin",
+                "value": "font-thin"
+              },
+              {
+                "label": "extralight",
+                "value": "font-extralight"
+              },
+              {
+                "label": "light",
+                "value": "font-light"
+              },
+              {
+                "label": "normal",
+                "value": "font-normal"
+              }, {
+                "label": "medium",
+                "value": "font-medium"
+              }, {
+                "label": "semibold",
+                "value": "font-semibold"
+              }, {
+                "label": "extrabold",
+                "value": "font-extrabold"
+              }, {
+                "label": "black",
+                "value": "font-black"
+              }
+            ]
+          }, {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding Top",
+            "default": 0
+          }, {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding Bottom",
+            "default": 0
+          }, {
+            "type": "number",
+            "id": "margin_top",
+            "label": "Margin Top",
+            "default": 0
+          }, {
+            "type": "number",
+            "id": "margin_bottom",
+            "label": "Margin Bottom",
+            "default": 0
+          }
+        ]
+      }, {
+        "name": "Button",
+        "type": "button",
+        "settings": [
+          {
+            "type": "url",
+            "id": "url",
+            "label": "URL",
+            "default": "/collections/all"
+          },
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Button Text",
+            "default": "Products"
+          },
+          {
+            "type": "select",
+            "id": "primary_button_variant",
+            "label": "Primary Button Variant",
+            "default": "btn",
+            "options": [
+              {
+                "label": "btn",
+                "value": "btn"
+              },
+              {
+                "label": "btn-neutral",
+                "value": "btn btn-neutral"
+              },
+              {
+                "label": "btn-primary",
+                "value": "btn btn-primary"
+              },
+              {
+                "label": "btn-secondary",
+                "value": "btn btn-secondary"
+              }, {
+                "label": "btn-accent",
+                "value": "btn btn-accent"
+              }, {
+                "label": "bth-ghost",
+                "value": "btn btn-ghost"
+              }, {
+                "label": "btn-link",
+                "value": "btn btn-link"
+              }
+            ]
+          },
+          {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding Top",
+            "default": 0
+          }, {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding Bottom",
+            "default": 0
+          }, {
+            "type": "number",
+            "id": "margin_top",
+            "label": "Margin Top",
+            "default": 0
+          }, {
+            "type": "number",
+            "id": "margin_bottom",
+            "label": "Margin Bottom",
+            "default": 0
+          }
+        ]
+      }
+    ],
     "settings": [
-
-      {
-        "type": "text",
-        "id": "title",
-        "label": "Title",
-        "default": "Welcome to our store"
-      },
-      {
-        "type": "text",
-        "id": "subtitle",
-        "label": "Subtitle",
-        "default": "Shop our latest collections and products."
-      },
       {
         "type": "image_picker",
         "id": "image",
         "label": "Background image"
-      },
-      {
+      }, {
         "type": "range",
         "id": "opacity",
         "label": "Background opacity",
@@ -80,11 +283,29 @@
         "default": "bg-base-100",
         "options": [
           {
-            "label": "Background 1",
+            "label": "base-100",
             "value": "bg-base-100"
-          }, {
-            "label": "Background 2",
+          },
+          {
+            "label": "base-200",
             "value": "bg-base-200"
+          },
+          {
+            "label": "base-300",
+            "value": "bg-base-300"
+          },
+          {
+            "label": "neutral",
+            "value": "bg-neutral"
+          }, {
+            "label": "primary",
+            "value": "bg-primary"
+          }, {
+            "label": "secondary",
+            "value": "bg-secondary"
+          }, {
+            "label": "accent",
+            "value": "bg-accent"
           }
         ]
       }
@@ -93,10 +314,7 @@
       {
         "name": "Hero section",
         "category": "Hero",
-        "settings": {
-          "title": "Welcome to our store",
-          "subtitle": "Shop our latest collections and products."
-        }
+        "settings": {}
       }
     ]
   }

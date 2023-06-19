@@ -1,0 +1,244 @@
+{
+	"text-block": {
+		"name": "Text",
+		"type": "text",
+		"settings": [
+			{
+				"type": "text",
+				"id": "text",
+				"label": "Text",
+				"default": "Check out our latest products"
+			},
+			{
+				"type": "select",
+				"id": "text_color",
+				"label": "Text color",
+				"default": "text-neutral-content",
+				"options": [
+					{
+						"label": "neutral-content",
+						"value": "text-neutral-content"
+					},
+					{
+						"label": "base-content",
+						"value": "text-base-content"
+					},
+					{
+						"label": "primary-content",
+						"value": "text-primary-content"
+					},
+					{
+						"label": "secondary-content",
+						"value": "text-secondary-content"
+					},
+					{
+						"label": "accent-content",
+						"value": "text-accent-content"
+					}
+				]
+			},
+			{
+				"type": "select",
+				"id": "font_size",
+				"label": "Font size",
+				"default": "text-base",
+				"options": [
+					{
+						"label": "xs",
+						"value": "text-xs"
+					},
+					{
+						"label": "sm",
+						"value": "text-sm"
+					},
+					{
+						"label": "base",
+						"value": "text-base"
+					},
+					{
+						"label": "lg",
+						"value": "text-lg"
+					},
+					{
+						"label": "xl",
+						"value": "text-xl"
+					},
+					{
+						"label": "2xl",
+						"value": "text-2xl"
+					},
+					{
+						"label": "3xl",
+						"value": "text-3xl"
+					},
+					{
+						"label": "4xl",
+						"value": "text-4xl"
+					},
+					{
+						"label": "5xl",
+						"value": "text-5xl"
+					},
+					{
+						"label": "6xl",
+						"value": "text-6xl"
+					},
+					{
+						"label": "7xl",
+						"value": "text-7xl"
+					},
+					{
+						"label": "8xl",
+						"value": "text-8xl"
+					},
+					{
+						"label": "9xl",
+						"value": "text-9xl"
+					}
+				]
+			},
+			{
+				"type": "select",
+				"id": "font_weight",
+				"label": "Font Weight",
+				"default": "font-normal",
+				"options": [
+					{
+						"label": "thin",
+						"value": "font-thin"
+					},
+					{
+						"label": "extralight",
+						"value": "font-extralight"
+					},
+					{
+						"label": "light",
+						"value": "font-light"
+					},
+					{
+						"label": "normal",
+						"value": "font-normal"
+					},
+					{
+						"label": "medium",
+						"value": "font-medium"
+					},
+					{
+						"label": "semibold",
+						"value": "font-semibold"
+					},
+					{
+						"label": "extrabold",
+						"value": "font-extrabold"
+					},
+					{
+						"label": "black",
+						"value": "font-black"
+					}
+				]
+			},
+			{
+				"type": "number",
+				"id": "padding_top",
+				"label": "Padding Top",
+				"default": 0
+			},
+			{
+				"type": "number",
+				"id": "padding_bottom",
+				"label": "Padding Bottom",
+				"default": 0
+			},
+			{
+				"type": "number",
+				"id": "margin_top",
+				"label": "Margin Top",
+				"default": 0
+			},
+			{
+				"type": "number",
+				"id": "margin_bottom",
+				"label": "Margin Bottom",
+				"default": 0
+			}
+		]
+	},
+	"button-block": {
+		"name": "Button",
+		"type": "button",
+		"settings": [
+			{
+				"type": "url",
+				"id": "url",
+				"label": "URL",
+				"default": "/products"
+			},
+			{
+				"type": "text",
+				"id": "text",
+				"label": "Button Text",
+				"default": "Products"
+			},
+			{
+				"type": "select",
+				"id": "primary_button_variant",
+				"label": "Primary Button Variant",
+				"default": "btn",
+				"options": [
+					{
+						"label": "btn",
+						"value": "btn"
+					},
+					{
+						"label": "btn-neutral",
+						"value": "btn btn-neutral"
+					},
+					{
+						"label": "btn-primary",
+						"value": "btn btn-primary"
+					},
+					{
+						"label": "btn-secondary",
+						"value": "btn btn-secondary"
+					},
+					{
+						"label": "btn-accent",
+						"value": "btn btn-accent"
+					},
+					{
+						"label": "bth-ghost",
+						"value": "btn btn-ghost"
+					},
+					{
+						"label": "btn-link",
+						"value": "btn btn-link"
+					}
+				]
+			},
+			{
+				"type": "number",
+				"id": "padding_top",
+				"label": "Padding Top",
+				"default": 0
+			},
+			{
+				"type": "number",
+				"id": "padding_bottom",
+				"label": "Padding Bottom",
+				"default": 0
+			},
+			{
+				"type": "number",
+				"id": "margin_top",
+				"label": "Margin Top",
+				"default": 0
+			},
+			{
+				"type": "number",
+				"id": "margin_bottom",
+				"label": "Margin Bottom",
+				"default": 0
+			}
+		]
+	}
+}

@@ -5,7 +5,7 @@
       src="{{ section.settings.logo | img_url: '200x200' }}"
       alt="{{ section.settings.title }} logo" />
 
-    <p class="max-w-prose">{{ section.settings.title }}<br/>{{ section.settings.subtitle }}</p>
+    <p class="max-w-prose {{ section.settings.text }}">{{ section.settings.title }}<br/>{{ section.settings.subtitle }}</p>
 
     <ul class="flex gap-2 flex-wrap" role="list">
       {% for type in shop.enabled_payment_types %}
@@ -49,16 +49,49 @@
         "type": "image_picker",
         "id": "logo",
         "label": "Logo"
-      }, {
+      },
+      {
         "type": "text",
         "id": "title",
         "label": "Title",
         "default": "Company name"
-      }, {
+      },
+      {
         "type": "text",
         "id": "subtitle",
         "label": "Subtitle",
         "default": "Company slogan"
+      },
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu"
+      }, {
+        "type": "select",
+        "id": "text",
+        "label": "Text",
+        "default": "text-neutral-content",
+        "options": [
+          {
+            "label": "neutral-content",
+            "value": "text-neutral-content"
+          },
+          {
+            "label": "base-content",
+            "value": "text-base-content"
+          },
+          {
+            "label": "primary-content",
+            "value": "text-primary-content"
+          },
+          {
+            "label": "secondary-content",
+            "value": "text-secondary-content"
+          }, {
+            "label": "accent-content",
+            "value": "text-accent-content"
+          }
+        ]
       }, {
         "type": "select",
         "id": "background",
@@ -66,11 +99,29 @@
         "default": "bg-base-100",
         "options": [
           {
-            "label": "Background 1",
+            "label": "base-100",
             "value": "bg-base-100"
-          }, {
-            "label": "Background 2",
+          },
+          {
+            "label": "base-200",
             "value": "bg-base-200"
+          },
+          {
+            "label": "base-300",
+            "value": "bg-base-300"
+          },
+          {
+            "label": "neutral",
+            "value": "bg-neutral"
+          }, {
+            "label": "primary",
+            "value": "bg-primary"
+          }, {
+            "label": "secondary",
+            "value": "bg-secondary"
+          }, {
+            "label": "accent",
+            "value": "bg-accent"
           }
         ]
       }
